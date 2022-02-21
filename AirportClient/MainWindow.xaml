@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirportClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="350" Width="250">
     <Grid>
+        <StackPanel Orientation="Vertical" Grid.Column="0" Margin="25">
+            <Label HorizontalAlignment="Center">Airport ICAO code</Label>
+            <TextBox x:Name="textBoxICAO"/>
+            <Label HorizontalAlignment="Center">Airport IATA code</Label>
+            <TextBox x:Name="textBoxIATA"/>
+            <Label HorizontalAlignment="Center">Airport minima</Label>
+            <TextBox x:Name="textBoxMinima"/>
+            <StackPanel Orientation="Horizontal" Margin="25" HorizontalAlignment="Center">
+                <Button x:Name="saveButton" Margin="15" Click="SaveButton_Click">SAVE</Button>
+                <Button x:Name="loadButton" Margin="15" Click="LoadButton_Click">LOAD</Button>
+            </StackPanel>
+            <TextBlock x:Name="statusBar">Welcome!</TextBlock>
+        </StackPanel>
         
     </Grid>
 </Window>
