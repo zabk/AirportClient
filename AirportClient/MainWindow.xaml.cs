@@ -28,6 +28,12 @@ namespace AirportClient
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            if (textBoxICAO.Text=="" || textBoxIATA.Text=="" || textBoxMinima.Text=="")
+            {
+                statusBar.Foreground = Brushes.Red;
+                statusBar.Text="Please fill all box!";
+                return;
+            }
             AirportService.AirportServiceClient client = new AirportService.AirportServiceClient();
             AirportService.Airport airport = new AirportService.Airport
             {
@@ -39,16 +45,33 @@ namespace AirportClient
             textBoxICAO.Text = "";
             textBoxIATA.Text = "";
             textBoxMinima.Text = "";
-            statusBar.Text = "Airport saved";
+            statusBar.Foreground = Brushes.Green;
+            statusBar.Text = "Airport saved/updated...";
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
+            if (textBoxICAO.Text.Length != 4 )
+            {
+                statusBar.Foreground = Brushes.Red;
+                statusBar.Text = "Please fill ICAO code!";
+                return;
+            }
             AirportService.AirportServiceClient client = new AirportService.AirportServiceClient();
             AirportService.Airport airport= client.GetAirport(textBoxICAO.Text);
-            textBoxIATA.Text = airport.AirportIATACode;
-            textBoxMinima.Text = airport.Minima.ToString();
-            statusBar.Text = "Airport loaded";
+            if (airport.AirportICAOCode!=null)
+            {
+                textBoxIATA.Text = airport.AirportIATACode;
+                textBoxMinima.Text = airport.Minima.ToString();
+                statusBar.Foreground = Brushes.Green;
+                statusBar.Text = "Airport loaded...";
+            }
+            else
+            {
+                statusBar.Foreground = Brushes.Red;
+                statusBar.Text = "Airport not found...";
+            }
+            
         }
     }
 }

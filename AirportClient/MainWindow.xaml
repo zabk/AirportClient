@@ -15,8 +15,8 @@
             <Label HorizontalAlignment="Center">Airport minima</Label>
             <TextBox x:Name="textBoxMinima"/>
             <StackPanel Orientation="Horizontal" Margin="25" HorizontalAlignment="Center">
-                <Button x:Name="saveButton" Margin="15" Click="SaveButton_Click">SAVE</Button>
-                <Button x:Name="loadButton" Margin="15" Click="LoadButton_Click">LOAD</Button>
+                <Button x:Name="saveButton" Margin="15" BorderThickness="12 2 12 2" BorderBrush="LightGray" Background="LightGray" Click="SaveButton_Click">SAVE</Button>
+                <Button x:Name="loadButton" Margin="15" BorderThickness="12 2 12 2" BorderBrush="LightGray" Background="LightGray" Click="LoadButton_Click">LOAD</Button>
             </StackPanel>
             <TextBlock x:Name="statusBar">Welcome!</TextBlock>
         </StackPanel>
